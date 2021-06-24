@@ -38,14 +38,8 @@ export default{
             password:'',
         }
     },
-    beforeMount(){
-      this.logout()
-    },
     methods:{
-      logout(){
-        localStorage.removeItem('user')
-        localStorage.removeItem('token')
-      },
+      
       async Register(e){
         e.preventDefault();
         const res = await fetch('http://localhost/Gestion_RDV_Vue3_API/app/Patient/register',{
@@ -59,17 +53,9 @@ export default{
                 password: this.password,
                 })
             })
-            const result = await res.json()
-            const token = result.Token;
-            let user = result.User;
-            localStorage.setItem('token', token);
-            localStorage.setItem('user', user);
-
             if(res.status == 200){
-           
-               window.location.replace("/")
+              this.$router.push("/Login")
             }
-            return result
       }
     }
 }

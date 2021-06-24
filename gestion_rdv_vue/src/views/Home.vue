@@ -54,7 +54,7 @@ export default {
                 })
                 const result = await res.json()
                 console.log(result);
-                //  this.notEmpty=false
+                // this.notEmpty=false
                this.SearchByDate()
 
      },
@@ -88,7 +88,8 @@ export default {
       logged(){
         let user = localStorage.getItem('user')
         if(user == null){
-            $route.push('/Login')
+            // window.location.replace('/Login')
+            this.$router.push("/Login")
         }else{
         return true
         }

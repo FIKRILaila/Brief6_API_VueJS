@@ -23,14 +23,9 @@ export default{
             password:'',
         }
     },
-    beforeMount(){
-      this.logout()
-    },
+   
     methods:{
-      logout(){
-        localStorage.removeItem('user')
-        localStorage.removeItem('token')
-      },
+      
     async Login(e){
         e.preventDefault();
         let user = {
@@ -48,8 +43,9 @@ export default{
             const result = await res.json()
             localStorage.setItem("Token", result.Token)
             localStorage.setItem("user", JSON.stringify(result.User))
-            window.location.replace("/")
-            return result
+            // window.location.replace("/")
+            this.$router.push("/")
+            // return result
     }
     }
 }
